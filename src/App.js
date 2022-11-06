@@ -1,19 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-import Feed from './components/Feed';
-import { useEffect } from 'react';
+// import logo from "./logo.svg";
+import Feed from "./components/Feed";
+import { useEffect, useState } from "react";
+import API from "./api";
 
-const ENDPOINT = "https://6366c718f5f549f052cc8126.mockapi.io/"
+const api = new API();
 
 function App() {
-  
+  const [movies, setMovies] = useState([]);
+
   useEffect(() => {
-    fetch(`${ENPOINT}movies`)
-  })
+    api
+      .get("/movies")
+      .then(res => res.json())
+      .then(data => setMovies(data));
+  }, []);
 
   return (
-    <div className="App">
-      <Feed />
+    <div className="App min-h-screen bg-slate-900">
+      <Feed movies={movies} />
     </div>
   );
 }
