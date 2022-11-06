@@ -125,7 +125,6 @@ function Reviews({ movieId, reviews: currentReviews }) {
   const createReview = async data => {
     const response = await client.post(`/movies/${movieId}/reviews`, JSON.stringify(data));
 
-    console.log({ response });
     if (response.status === 201) {
       window.location.reload(false);
     }
