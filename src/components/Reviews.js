@@ -15,7 +15,7 @@ function Reviews({id, reviews: currentReviews , setMovies}) {
     return (
       <div className="container text-center bg-dark" id="review-div">
           <form id="review-form"
-          handleSubmit={addReview}
+          onSubmit={addReview}
           >
             <label htmlFor="review-text">
               <input
